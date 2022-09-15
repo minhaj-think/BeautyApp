@@ -3,9 +3,18 @@ import {View,Text,Image,StyleSheet} from 'react-native';
 import Vegon from './../../Assets/vegan.png';
 import Natural from './../../Assets/natural2.jpg';
 import Cplus from './../../Assets/natural.png';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 const DetailsSection = () => {
-  return (
+
+     
+    const config = {
+        velocityThreshold: 0.3,
+        directionalOffsetThreshold: 80
+      };
+
+    return (
+    <>
     <View style={{width:'92%',marginHorizontal:'4%',display:'flex',flexDirection:'row',justifyContent:'space-around',marginTop:10}}>
         <View style={styles.box}>
             <Image 
@@ -37,6 +46,18 @@ const DetailsSection = () => {
 
         </View>
     </View>
+    <GestureRecognizer
+        onSwipe={(direction, state) =>console.log(direction)}
+        config={config}
+        style={{
+          flex: 1,
+          backgroundColor: 'red'
+        }}
+        >
+        <Text>asd</Text>
+        <Text>onSwipe callback received gesture: Kill</Text>
+      </GestureRecognizer>
+</>
     )
 }
 
